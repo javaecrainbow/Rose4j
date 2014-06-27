@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view_list>
+	<display htmlType="hidden">
+	<name>userId</name>
+	<description>编号</description>
+	</display>
+	<display htmlType="text">
+	<name>userName</name>
+	<description>姓名</description>
+	</display>
+	<display htmlType="radio">
+	<name>sex</name>
+	<description>性别</description>
+	<options type="text">
+	<option selected="true">
+	<value>mail</value>
+	<description>男</description>
+	</option>
+	<option>
+	<value>femail</value>
+	<description>女</description>
+	</option>
+	</options>
+	</display>
+	<display htmlType="text">
+	<name>password</name>
+	<description>密码</description>
+	</display>
+	<display htmlType="text">
+	<name>mobile</name>
+	<description>手机号</description>
+	</display>
+	<display htmlType="select">
+	<name>role</name>
+	<description>角色</description>
+	<options>
+	<option selected="true"> 
+	<value>管理员</value>
+	<description>管理员</description>
+	</option>
+	<option>
+	<value>操作员</value>
+	<description>操作员</description>
+	</option>
+	</options>
+	</display>
+	<display htmlType="text">
+	<name>address</name>
+	<description>家庭住址</description>
+	</display>
+</view_list>

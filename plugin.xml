@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+  <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="Rose4j.contribution1"
+            objectClass="org.eclipse.jdt.core.IJavaElement">
+         <menu
+               icon="icons/salk.png"
+               id="Rose4j.menu2"
+               label="Rose4j"
+               path="additions">
+            <separator
+                  name="group1">
+            </separator>
+            <separator
+                  name="group2">
+            </separator>
+            <separator
+                  name="group3">
+            </separator>
+         </menu>   
+         <action
+               class="com.honestspring.rose4j.action.BuildEnvironmentAction"
+               enablesFor="1"
+               icon="icons/build_environment.gif"
+               id="com.honestspring.rose4j.action.BuildEnvironmentAction"
+               label="搭建开发环境"
+               menubarPath="Rose4j.menu2/group1"
+               tooltip="搭建开发环境">
+         </action>
+         <action
+               class="com.honestspring.rose4j.action.CodeGenerationAction"
+               enablesFor="1"
+               icon="icons/code_generation.gif"
+               id="com.honestspring.rose4j.action.CodeGenerationAction"
+               label="代码生成"
+               menubarPath="Rose4j.menu2/group2"
+               tooltip="代码生成">
+         </action>
+          <action
+               class="com.honestspring.rose4j.action.BusinessParaGenerationAction"
+               enablesFor="1"
+               icon="icons/parameter_generation.gif"
+               id="com.honestspring.rose4j.action.BusinessParaGenerationAction"
+               label="业务参数生成"
+               menubarPath="Rose4j.menu2/group3"
+               tooltip="业务参数生成">
+         </action>
+          <action
+               class="com.honestspring.rose4j.action.SysParaGenerationAction"
+               enablesFor="1"
+               icon="icons/parameter_generation.gif"
+               id="com.honestspring.rose4j.action.SysParaGenerationAction"
+               label="系统参数生成"
+               menubarPath="Rose4j.menu2/group3"
+               tooltip="系统参数生成">
+         </action>
+      </objectContribution>
+   </extension>
+
+</plugin>

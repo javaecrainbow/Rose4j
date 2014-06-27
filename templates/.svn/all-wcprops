@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/templates
+END
+jspListTemplate.jspjet
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/32/branches/Release_20130114/Rose4j/Rose4j/templates/jspListTemplate.jspjet
+END
+ jspInputTemplate.jspjet
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/templates/%20jspInputTemplate.jspjet
+END
+baseDaoImplTemplate.javajet
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/31/branches/Release_20130114/Rose4j/Rose4j/templates/baseDaoImplTemplate.javajet
+END
+baseDaoTemplate.javajet
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/templates/baseDaoTemplate.javajet
+END
+daoTemplate.javajet
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/34/branches/Release_20130114/Rose4j/Rose4j/templates/daoTemplate.javajet
+END
+ajaxController.javajet
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/31/branches/Release_20130114/Rose4j/Rose4j/templates/ajaxController.javajet
+END
+serviceTemplate.javajet
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/templates/serviceTemplate.javajet
+END
+serviceImplTemplate.javajet
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/!svn/ver/35/branches/Release_20130114/Rose4j/Rose4j/templates/serviceImplTemplate.javajet
+END
+controllerTemplate.javajet
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/!svn/ver/35/branches/Release_20130114/Rose4j/Rose4j/templates/controllerTemplate.javajet
+END

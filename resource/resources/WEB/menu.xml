@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+	<funcgrp id="1" icon="icon-sys" grpname="用户管理">
+		<function-id>11</function-id>
+		<function-id>12</function-id>
+		<function-id>13</function-id>
+		<function-id>14</function-id>
+	</funcgrp>
+	<funcgrp id="2" icon="icon-sys" grpname="财务管理">
+		<function-id>21</function-id>
+		<function-id>22</function-id>
+		<function-id>23</function-id>
+		<function-id>24</function-id>
+	</funcgrp>
+</menu>

@@ -1,0 +1,127 @@
+package com.honestspring.rose4j.templates;
+
+import com.honestspring.rose4j.model.*;
+
+public class ControllerTemplate
+{
+  protected static String nl;
+  public static synchronized ControllerTemplate create(String lineSeparator)
+  {
+    nl = lineSeparator;
+    ControllerTemplate result = new ControllerTemplate();
+    nl = null;
+    return result;
+  }
+
+  public final String NL = nl == null ? (System.getProperties().getProperty("line.separator")) : nl;
+  protected final String TEXT_1 = "package ";
+  protected final String TEXT_2 = ";" + NL + "import ";
+  protected final String TEXT_3 = ".";
+  protected final String TEXT_4 = ";" + NL + "import ";
+  protected final String TEXT_5 = ".";
+  protected final String TEXT_6 = ";" + NL + "import java.util.HashMap;" + NL + "import java.util.List;" + NL + "import java.util.Map;" + NL + "" + NL + "import javax.servlet.http.HttpServletRequest;" + NL + "" + NL + "import org.springframework.beans.factory.annotation.Autowired;" + NL + "import org.springframework.stereotype.Controller;" + NL + "import org.springframework.ui.Model;  " + NL + "import org.springframework.web.bind.annotation.RequestMapping;" + NL + "import org.springframework.web.bind.annotation.RequestMethod;" + NL + "import org.springframework.web.bind.annotation.RequestParam;" + NL + "import org.springframework.web.bind.annotation.ResponseBody;" + NL + "import com.honestspring.sys.util.DataGridModel;" + NL + "@Controller" + NL + "@RequestMapping(\"/";
+  protected final String TEXT_7 = "\")" + NL + "public class ";
+  protected final String TEXT_8 = NL + "{" + NL + "\t@Autowired" + NL + "\tprivate ";
+  protected final String TEXT_9 = " ";
+  protected final String TEXT_10 = ";" + NL + "" + NL + "\t@RequestMapping(\"/queryList\")" + NL + "\t@ResponseBody" + NL + "\t\t\tpublic Map<String, Object> queryList(DataGridModel dgm, ";
+  protected final String TEXT_11 = " ";
+  protected final String TEXT_12 = ",HttpServletRequest request)" + NL + "\t\t\tthrows Exception {" + NL + "\t\tMap<String, Object> listMap = ";
+  protected final String TEXT_13 = ".getList(dgm," + NL + "\t\t\t\t\"";
+  protected final String TEXT_14 = "\", ";
+  protected final String TEXT_15 = ");" + NL + "\t\treturn listMap;" + NL + "\t}" + NL + "\t" + NL + "\t@RequestMapping(value = \"/list\", method = RequestMethod.GET)" + NL + "\tpublic String listHome(Model model) throws Exception {" + NL + "\t\t" + NL + "\t\tmodel.addAttribute(\"Module\", \"";
+  protected final String TEXT_16 = "\");" + NL + "\t\treturn \"";
+  protected final String TEXT_17 = "/";
+  protected final String TEXT_18 = "/list\";" + NL + "\t}" + NL + "" + NL + "\t@RequestMapping(value = \"/popWindow\", method = RequestMethod.GET)" + NL + "\tpublic String popWindow() throws Exception {" + NL + "\t\treturn \"";
+  protected final String TEXT_19 = "/";
+  protected final String TEXT_20 = "/input\";" + NL + "\t}" + NL + "\t@RequestMapping(value = \"/addOrUpdate\", method = RequestMethod.POST)" + NL + "\t@ResponseBody" + NL + "\tpublic Map<String, String> addOrUpdate(";
+  protected final String TEXT_21 = " ";
+  protected final String TEXT_22 = ") throws Exception {" + NL + "\t\t// spring会利用jackson自动将返回值封装成JSON对象，比struts2方便了很多" + NL + "\t\tMap<String, String> map = new HashMap<String, String>();" + NL + "\t\ttry {" + NL + "\t\t\t";
+  protected final String TEXT_23 = ".addOrUpdate(";
+  protected final String TEXT_24 = ");" + NL + "\t\t\tmap.put(\"mes\", \"操作成功\");" + NL + "\t\t} catch (Exception e) {" + NL + "\t\t\te.printStackTrace();" + NL + "\t\t\tmap.put(\"mes\", \"操作失败\");" + NL + "\t\t\tthrow e;" + NL + "\t\t}" + NL + "\t\treturn map;" + NL + "\t}" + NL + "" + NL + "\t@RequestMapping(value = \"/delete\", method = RequestMethod.POST)" + NL + "\t@ResponseBody" + NL + "\tpublic Map<String, String> delete(@RequestParam(\"uid\") List<Integer> uid)" + NL + "\t\t\tthrows Exception {" + NL + "\t\t// spring mvc 还可以将参数绑定为list类型" + NL + "\t\tMap<String, String> map = new HashMap<String, String>();" + NL + "\t\ttry {" + NL + "\t\t\t";
+  protected final String TEXT_25 = ".delete(uid);" + NL + "\t\t\tmap.put(\"mes\", \"删除成功\");" + NL + "\t\t} catch (Exception e) {" + NL + "\t\t\te.printStackTrace();" + NL + "\t\t\tmap.put(\"mes\", \"删除失败\");" + NL + "\t\t\tthrow e;" + NL + "\t\t}" + NL + "\t\treturn map;// 重定向" + NL + "\t}" + NL + "\t";
+  protected final String TEXT_26 = NL + "\t@RequestMapping(value=\"/logon\")" + NL + "\tpublic String login(Userinfo userInfo, Model model," + NL + "\t\t\tHttpServletRequest request) throws Exception {" + NL + "\t\tString userName = userInfo.getUserName();" + NL + "\t\tString password = userInfo.getPassword();" + NL + "\t\tUserinfo dbUserInfo = userinfoService.getUserByName(userName);" + NL + "\t\tif (dbUserInfo == null) {" + NL + "\t\t\tmodel.addAttribute(\"message\", \"用户不存在\");" + NL + "\t\t\treturn \"logon\";" + NL + "\t\t} else if (password == null" + NL + "\t\t\t\t|| !password.equals(dbUserInfo.getPassword())) {" + NL + "\t\t\tmodel.addAttribute(\"message\", \"密码错误\");" + NL + "\t\t\treturn \"logon\";" + NL + "\t\t} else {" + NL + "\t\t\trequest.getSession().setAttribute(\"userinfo\"," + NL + "\t\t\t\t\tuserInfo);" + NL + "\t\t\treturn \"redirect:main\";" + NL + "\t\t}" + NL + "\t\t}" + NL + "\t\t@RequestMapping(\"/main\")" + NL + "\tpublic String mainHome(Model model) throws Exception {" + NL + "\t\treturn \"main\";" + NL + "\t}" + NL + "\t";
+  protected final String TEXT_27 = NL + "}";
+  protected final String TEXT_28 = NL;
+
+  public String generate(Object argument)
+  {
+    final StringBuffer stringBuffer = new StringBuffer();
+    
+	JavaTemplateArgs args = (JavaTemplateArgs)argument;
+	String modeName = args.getModeName();
+	String packageName = args.getPackageName();
+	String className = args.getClassName();
+	String entityPackageName = args.getPackageNameInfo().getEntityPackageName();
+	String daoPackageName = args.getPackageNameInfo().getDaoPackageName();
+	String servicePackageName = args.getPackageNameInfo().getServicPackageName();
+	String actionPackageName = args.getPackageNameInfo().getActionPackageName();
+	
+	String entityClassName = args.getClassNameInfo().getEntityClassName();
+	String daoClassName = args.getClassNameInfo().getDaoClassName();
+	String serviceClassName = args.getClassNameInfo().getServicClassName();
+	String actionClassName = args.getClassNameInfo().getActionClassName();
+	
+	String entityObjectName = args.getClassNameInfo().getEntityObjectName();
+	String daoObjectName = args.getClassNameInfo().getDaoObjectName();
+	String serviceObjectName = args.getClassNameInfo().getServicObjectName();
+	String actionObjectName = args.getClassNameInfo().getActionObjectName();
+
+    stringBuffer.append(TEXT_1);
+    stringBuffer.append(packageName);
+    stringBuffer.append(TEXT_2);
+    stringBuffer.append(entityPackageName);
+    stringBuffer.append(TEXT_3);
+    stringBuffer.append(entityClassName);
+    stringBuffer.append(TEXT_4);
+    stringBuffer.append(servicePackageName);
+    stringBuffer.append(TEXT_5);
+    stringBuffer.append(serviceClassName);
+    stringBuffer.append(TEXT_6);
+    stringBuffer.append(entityObjectName);
+    stringBuffer.append(TEXT_7);
+    stringBuffer.append(args.getClassName());
+    stringBuffer.append(TEXT_8);
+    stringBuffer.append(serviceClassName);
+    stringBuffer.append(TEXT_9);
+    stringBuffer.append(serviceObjectName);
+    stringBuffer.append(TEXT_10);
+    stringBuffer.append(entityClassName);
+    stringBuffer.append(TEXT_11);
+    stringBuffer.append(entityObjectName);
+    stringBuffer.append(TEXT_12);
+    stringBuffer.append(serviceObjectName);
+    stringBuffer.append(TEXT_13);
+    stringBuffer.append(entityClassName);
+    stringBuffer.append(TEXT_14);
+    stringBuffer.append(entityObjectName);
+    stringBuffer.append(TEXT_15);
+    stringBuffer.append(entityObjectName);
+    stringBuffer.append(TEXT_16);
+    stringBuffer.append(modeName );
+    stringBuffer.append(TEXT_17);
+    stringBuffer.append(entityObjectName);
+    stringBuffer.append(TEXT_18);
+    stringBuffer.append(modeName );
+    stringBuffer.append(TEXT_19);
+    stringBuffer.append(entityObjectName);
+    stringBuffer.append(TEXT_20);
+    stringBuffer.append(entityClassName);
+    stringBuffer.append(TEXT_21);
+    stringBuffer.append(entityObjectName);
+    stringBuffer.append(TEXT_22);
+    stringBuffer.append(serviceObjectName);
+    stringBuffer.append(TEXT_23);
+    stringBuffer.append(entityObjectName);
+    stringBuffer.append(TEXT_24);
+    stringBuffer.append(serviceObjectName);
+    stringBuffer.append(TEXT_25);
+     if("userinfo".equals(entityObjectName)) { 
+    stringBuffer.append(TEXT_26);
+     
+	}
+	
+    stringBuffer.append(TEXT_27);
+    stringBuffer.append(TEXT_28);
+    return stringBuffer.toString();
+  }
+}

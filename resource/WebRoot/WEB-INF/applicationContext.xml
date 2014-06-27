@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	   					http://www.springframework.org/schema/tx 
+          				http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+          				http://www.springframework.org/schema/context 
+          				http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+          				http://www.springframework.org/schema/aop 
+          				http://www.springframework.org/schema/aop/spring-aop-3.0.xsd" default-autowire="byName">
+		<!-- 注意上面的default-autowire="byName"，如果没有这个声明那么HibernateDaoSupport中的sessionFactory不会被注入 -->
+	<!-- 定义使用C3P0连接池的数据源 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<!-- 指定连接数据库的JDBC驱动 -->
+		<property name="driverClass">
+		 	<value>com.mysql.jdbc.Driver</value>
+		 </property>
+		<!-- 连接数据库所用的URL -->
+		<property name="jdbcUrl">
+			<value>jdbc:mysql://localhost:3306/computer_lab?useUnicode=true&amp;characterEncoding=utf-8</value>
+		</property>
+		<!-- 连接数据库的用户名 -->
+		<property name="user">
+			<value>root</value>
+		</property>
+		<!-- 连接数据库的密码 -->
+		<property name="password">
+			<value>root</value>
+		</property>
+		<!-- 设置数据库连接池的最大连接数 -->
+		<property name="maxPoolSize"> 
+			<value>20</value>
+		</property>
+		<!-- 设置数据库连接池的最小连接数 -->
+		<property name="minPoolSize">
+			<value>2</value>
+		</property>
+		<!-- 设置数据库连接池的初始化连接数 -->
+		<property name="initialPoolSize">
+			<value>2</value>
+		</property>
+		<!-- 设置数据库连接池的连接的最大空闲时间,单位为秒 -->
+		<property name="maxIdleTime">
+			<value>20</value>
+		</property>
+	</bean>
+
+    <!-- 定义Hibernate的SessionFactory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <!-- 依赖注入上面定义的数据源dataSource -->
+      
+        <!-- 注册Hibernate的ORM映射文件 -->
+        <property name="mappingDirectoryLocations">
+            <list>
+            	<!-- 这里直接映射的pojo类所在的包，简单方便不用没次加一个pojo类都需要到这里来添加 -->
+	                <value>classpath:com/rose4j/lab/model</value>
+	                <value>classpath:com/rose4j/stu/model</value>
+	               	<value>classpath:com/rose4j/tea/model</value>
+	               	<value>classpath:com/rose4j/order/model</value>
+	               	<value>classpath:com/rose4j/user/model</value>      
+            </list>
+        </property>
+        <!-- 设置Hibernate的相关属性 -->
+        <property name="hibernateProperties">
+            <props>
+                <!-- 设置Hibernate的数据库方言 -->
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <!-- 设置Hibernate是否在控制台输出SQL语句，开发调试阶段通常设为true -->
+                <prop key="show_sql">true</prop>
+				<!-- 设置Hibernate一个提交批次中的最大SQL语句数 -->
+                <prop key="hibernate.jdbc.batch_size">50</prop>
+            </props>
+        </property>
+    </bean>
+
+<!-- 下面是配置声明式事务管理的，个人感觉比用注解管理事务要简单方便 -->
+	<bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<aop:config>
+		<aop:advisor pointcut="execution(* com.computerlab.*.service.*Service.*(..))" advice-ref="txAdvice"/>
+	</aop:config>
+
+	<tx:advice id="txAdvice" transaction-manager="txManager">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="query*" read-only="true"/>
+			<tx:method name="find*" read-only="true"/>
+			<tx:method name="load*" read-only="true"/>
+			<tx:method name="*" rollback-for="Exception"/>
+		</tx:attributes>
+	</tx:advice>
+    <!-- 装配通用数据库访问类BaseDAOImpl -->
+	<!-- 该 BeanPostProcessor 将自动起作用，对标注 @Autowired 的 Bean 进行自动注入 -->  
+</beans>

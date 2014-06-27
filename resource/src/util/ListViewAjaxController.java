@@ -1,0 +1,76 @@
+package com.rose4j.util;
+
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.honestspring.view.component.AbstractSysViewComponent;
+import com.honestspring.view.component.FunctionMenuComponent;
+import com.honestspring.view.component.HSListViewComponent;
+import com.honestspring.view.model.DataGrid;
+import com.honestspring.view.model.Menu;
+import com.hotelmgr.user.model.Userinfo;
+
+@Controller
+@RequestMapping("/para/list")
+public class ListViewAjaxController {
+
+
+	@RequestMapping("/datagrid")
+	public String getListDataGrid() {
+		return null;
+	}
+
+	@RequestMapping("/getPrimaryKey")
+	public String getPrimaryKey() {
+		AbstractSysViewComponent hsViewComponent = new HSListViewComponent();
+		return null;
+	}
+	
+	@RequestMapping(value="/getViewList/{module}" ,method = RequestMethod.GET)
+	public @ResponseBody DataGrid getViewList(HttpServletRequest request, @PathVariable String module) {
+		AbstractSysViewComponent hsViewComponent = new HSListViewComponent();
+		DataGrid dataGridModel = (DataGrid) hsViewComponent.getObj(module);
+		String projectname = request.getContextPath();
+		dataGridModel.setUrl(projectname+"/"+module+"/queryList");
+		dataGridModel.setSortName(module.toLowerCase()+"."+dataGridModel.getIdField());
+		ObjectMapper om = new ObjectMapper();
+		Writer w = new StringWriter();
+		try {
+			om.writeValue(w, dataGridModel);
+			w.close();
+		} catch (IOException e) {
+			// 错误处理
+		}
+		return dataGridModel;
+	}
+	
+	
+	@RequestMapping(value="/getMenuList" ,method = RequestMethod.GET)
+	public @ResponseBody Menu getMenuList(HttpServletRequest request) {
+		AbstractSysViewComponent functionMenuComponent = new FunctionMenuComponent();
+		Menu menu = (Menu)functionMenuComponent.getObj(null);
+		ObjectMapper om = new ObjectMapper();
+		Writer w = new StringWriter();
+		Userinfo userinfo = (Userinfo)request.getSession().getAttribute("userinfo");
+		if("操作员".equals(userinfo.getRole())){
+			menu.getMenus().remove(0);
+		}
+		try {
+			om.writeValue(w, menu);
+			w.close();
+		} catch (IOException e) {
+			// 错误处理
+		}
+		return menu;
+	}
+}

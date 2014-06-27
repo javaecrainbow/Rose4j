@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cata>
+	<field-list>
+	<field htmlType="input">
+	<name>userId</name>
+	<description>编号</description>
+	</field>
+	<field htmlType="input">
+	<name>userName</name>
+	<description>姓名</description>
+	</field>
+	<field htmlType="select">
+		<name>role</name>
+		<description>角色</description>
+		<options>
+		<option selected="true"> 
+		<value></value>
+		<description>---请选择---</description>
+		</option>
+		<option> 
+		<value>管理员</value>
+		<description>管理员</description>
+		</option>
+		<option>
+		<value>操作员</value>
+		<description>操作员</description>
+		</option>
+	</options>
+	</field>
+		</field-list>
+	<clause>
+		<sql>
+			
+		</sql>
+		
+	</clause>
+</cata>

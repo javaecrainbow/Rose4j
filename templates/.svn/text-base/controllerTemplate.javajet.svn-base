@@ -1,0 +1,145 @@
+<%@jet package="com.honestspring.rose4j.templates" class="ControllerTemplate" imports="com.honestspring.rose4j.model.*" %>
+<%
+	JavaTemplateArgs args = (JavaTemplateArgs)argument;
+	String modeName = args.getModeName();
+	String packageName = args.getPackageName();
+	String className = args.getClassName();
+	String entityPackageName = args.getPackageNameInfo().getEntityPackageName();
+	String daoPackageName = args.getPackageNameInfo().getDaoPackageName();
+	String servicePackageName = args.getPackageNameInfo().getServicPackageName();
+	String actionPackageName = args.getPackageNameInfo().getActionPackageName();
+	
+	String entityClassName = args.getClassNameInfo().getEntityClassName();
+	String daoClassName = args.getClassNameInfo().getDaoClassName();
+	String serviceClassName = args.getClassNameInfo().getServicClassName();
+	String actionClassName = args.getClassNameInfo().getActionClassName();
+	
+	String entityObjectName = args.getClassNameInfo().getEntityObjectName();
+	String daoObjectName = args.getClassNameInfo().getDaoObjectName();
+	String serviceObjectName = args.getClassNameInfo().getServicObjectName();
+	String actionObjectName = args.getClassNameInfo().getActionObjectName();
+%>
+package <%=packageName%>;
+import <%=entityPackageName%>.<%=entityClassName%>;
+import <%=servicePackageName%>.<%=serviceClassName%>;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;  
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import com.honestspring.sys.util.DataGridModel;
+@Controller
+@RequestMapping("/<%=entityObjectName%>")
+public class <%=args.getClassName()%>
+{
+	@Autowired
+	private <%=serviceClassName%> <%=serviceObjectName%>;
+
+	@RequestMapping("/queryList")
+	@ResponseBody
+			public Map<String, Object> queryList(DataGridModel dgm, <%=entityClassName%> <%=entityObjectName%>,HttpServletRequest request)
+			throws Exception {
+		Map<String, Object> listMap = <%=serviceObjectName%>.getList(dgm,
+				"<%=entityClassName%>", <%=entityObjectName%>);
+		return listMap;
+	}
+	
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public String listHome(Model model) throws Exception {
+		
+		model.addAttribute("Module", "<%=entityObjectName%>");
+		return "<%=modeName %>/<%=entityObjectName%>/list";
+	}
+
+	@RequestMapping(value = "/popWindow", method = RequestMethod.GET)
+	public String popWindow() throws Exception {
+		return "<%=modeName %>/<%=entityObjectName%>/input";
+	}
+	@RequestMapping(value = "/addOrUpdate", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, String> addOrUpdate(<%=entityClassName%> <%=entityObjectName%>) throws Exception {
+		// spring会利用jackson自动将返回值封装成JSON对象，比struts2方便了很多
+		Map<String, String> map = new HashMap<String, String>();
+		try {
+			<%=serviceObjectName%>.addOrUpdate(<%=entityObjectName%>);
+			map.put("mes", "操作成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+			map.put("mes", "操作失败");
+			throw e;
+		}
+		return map;
+	}
+
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, String> delete(@RequestParam("uid") List<Integer> uid)
+			throws Exception {
+		// spring mvc 还可以将参数绑定为list类型
+		Map<String, String> map = new HashMap<String, String>();
+		try {
+			<%=serviceObjectName%>.delete(uid);
+			map.put("mes", "删除成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+			map.put("mes", "删除失败");
+			throw e;
+		}
+		return map;// 重定向
+	}
+	<% if("userinfo".equals(entityObjectName)) { %>
+	@RequestMapping(value="/logon")
+	public String login(Userinfo userInfo, Model model,
+			HttpServletRequest request) throws Exception {
+		String userName = userInfo.getUserName();
+		String password = userInfo.getPassword();
+		Userinfo dbUserInfo = userinfoService.getUserByName(userName);
+		if (dbUserInfo == null) {
+			model.addAttribute("message", "用户不存在");
+			return "logon";
+		} else if (password == null
+				|| !password.equals(dbUserInfo.getPassword())) {
+			model.addAttribute("message", "密码错误");
+			return "logon";
+		} else {
+			request.getSession().setAttribute("userinfo",
+					userInfo);
+			return "redirect:main";
+		}
+		}
+		@RequestMapping("/main")
+	public String mainHome(Model model) throws Exception {
+		return "main";
+	}
+	@RequestMapping("/logonout")
+	public String logonOut(Userinfo userInfo, Model model,
+			HttpServletRequest request)throws Exception{
+		request.getSession().removeAttribute("userinfo");
+		
+		return "logon";
+	}
+	@RequestMapping("/changeProfile")
+	public String changeProfile(Userinfo userinfo,Model model,HttpServletRequest request){
+		Userinfo info =(Userinfo) request.getSession().getAttribute("userinfo");
+		try {
+			info.setPassword(userinfo.getPassword());
+			info.setUserName(userinfo.getUserName());
+			userinfoService.addOrUpdate(info);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return "redirect:main";
+	}
+	<% 
+	}
+	%>
+}

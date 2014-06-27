@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/tools
+END
+LogUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/!svn/ver/30/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/tools/LogUtils.java
+END
+logback.xml
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/30/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/tools/logback.xml
+END
+Tools.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/tools/Tools.java
+END

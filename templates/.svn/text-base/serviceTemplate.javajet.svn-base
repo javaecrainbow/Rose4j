@@ -1,0 +1,34 @@
+<%@ jet package="com.honestspring.rose4j.templates" class="ServiceTemplate" imports="com.honestspring.rose4j.model.*"%>
+<%
+	JavaTemplateArgs args = (JavaTemplateArgs)argument;
+	String modeName = args.getModeName();
+	String packageName = args.getPackageName();
+	String className = args.getClassName();
+	String entityPackageName = args.getPackageNameInfo().getEntityPackageName();
+	String daoPackageName = args.getPackageNameInfo().getDaoPackageName();
+	String servicePackageName = args.getPackageNameInfo().getServicPackageName();
+	String actionPackageName = args.getPackageNameInfo().getActionPackageName();
+	
+	String entityClassName = args.getClassNameInfo().getEntityClassName();
+	String daoClassName = args.getClassNameInfo().getDaoClassName();
+	String serviceClassName = args.getClassNameInfo().getServicClassName();
+	String actionClassName = args.getClassNameInfo().getActionClassName();
+	
+	String entityObjectName = args.getClassNameInfo().getEntityObjectName();
+	String daoObjectName = args.getClassNameInfo().getDaoObjectName();
+	String serviceObjectName = args.getClassNameInfo().getServicObjectName();
+	String actionObjectName = args.getClassNameInfo().getActionObjectName();
+%>
+package <%=args.getPackageName()%>;
+
+import <%=args.getPackageNameInfo().getEntityPackageName()%>.<%=args.getClassNameInfo().getEntityClassName()%>;
+import java.util.List;
+import java.util.Map;
+import com.honestspring.util.DataGridModel;
+
+public interface <%=args.getClassName()%> {
+
+	Map<String,Object> getFinanceList(DataGridModel dmg,String clazz,<%=entityClassName%> <%=entityObjectName%>) throws Exception;
+	void addOrUpdateFinance(<%=entityClassName%> <%=entityObjectName%>) throws Exception;
+	void deleteFinance(List<Integer> financeIds)throws Exception;
+}

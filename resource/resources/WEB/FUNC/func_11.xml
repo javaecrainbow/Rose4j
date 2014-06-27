@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<func>
+	<function-id>11</function-id>
+	<function-type></function-type>
+	<function-icon>icon-nav</function-icon>
+	<function-url>/LibraryMgr/userinfo/list</function-url>
+	<function-name>用户列表</function-name>
+	<function-cata>cata_Userinfo</function-cata>
+	<function-list>list_Userinfo</function-list>
+	<function-screen>screen_Userinfo</function-screen>
+	<function-validation>validator_Userinfo</function-validation>
+	<function-view>view_Userinfo</function-view>
+	<function-component></function-component>
+	<function-attribute></function-attribute>
+	</func>

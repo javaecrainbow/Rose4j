@@ -1,0 +1,82 @@
+<%@ jet package="com.honestspring.rose4j.templates" class="ServiceImplTemplate" imports="com.honestspring.rose4j.model.*"%>
+<%
+	JavaTemplateArgs args = (JavaTemplateArgs)argument;
+	String modeName = args.getModeName();
+	String packageName = args.getPackageName();
+	String className = args.getClassName();
+	String entityPackageName = args.getPackageNameInfo().getEntityPackageName();
+	String daoPackageName = args.getPackageNameInfo().getDaoPackageName();
+	String servicePackageName = args.getPackageNameInfo().getServicPackageName();
+	
+	String entityClassName = args.getClassNameInfo().getEntityClassName();
+	String daoClassName = args.getClassNameInfo().getDaoClassName();
+	String serviceClassName = args.getClassNameInfo().getServicClassName();
+	
+	String entityObjectName = args.getClassNameInfo().getEntityObjectName();
+	String daoObjectName = args.getClassNameInfo().getDaoObjectName();
+	String serviceObjectName = args.getClassNameInfo().getServicObjectName();
+%>
+package <%=args.getPackageName()%>;
+
+import <%=args.getPackageNameInfo().getEntityPackageName()%>.<%=args.getClassNameInfo().getEntityClassName()%>;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import com.honestspring.sys.component.HSResolveObj;
+import com.honestspring.sys.model.ConditionParameter;
+import com.honestspring.sys.model.SearchParameter;
+import com.honestspring.sys.model.SortParameter;
+import com.honestspring.sys.util.DataGridModel;
+
+@Service
+public class <%=args.getClassName()%>{
+@Autowired
+	private <%=daoClassName%> baseDao;
+	public Map<String, Object> getList(DataGridModel dmg, String clazz,
+			<%=entityClassName%> <%=entityObjectName%>) throws Exception {
+
+		Map<String, Object> result = new HashMap<String, Object>(2); 
+		LinkedList<ConditionParameter> conditionFields =  HSResolveObj.getConditionParameter(<%=entityObjectName%>);
+
+		List<<%=entityClassName%>> total = baseDao.listAll(clazz,conditionFields);
+		SortParameter sortParameter = new SortParameter(dmg.getSort(),dmg.getOrder());
+		LinkedList sortFields = new LinkedList();
+		sortFields.add(sortParameter);
+		SearchParameter  searchParameter= new SearchParameter(dmg.getPage(), clazz, dmg.getRows(), sortFields,conditionFields);
+		List<<%=entityClassName%>> pageList = baseDao.listAll(searchParameter);
+		result.put("total", total == null ? 0 : total.size());
+		result.put("rows", pageList);
+		return result;
+	
+	}
+
+	public void addOrUpdate(<%=entityClassName%> <%=entityObjectName%>) throws Exception {
+		baseDao.saveOrUpdate(<%=entityObjectName%>);
+
+	}
+
+	public void delete(List<Integer> financeIds) throws Exception {
+		if(financeIds != null && financeIds.size() > 0) {
+			for(Integer id:financeIds){
+				baseDao.delById(<%=entityClassName%>.class, id);
+			}
+			
+		}
+	}
+	<% if("userinfo".equals(entityObjectName)) { %>
+	public Userinfo getUserByName(String name)
+			throws Exception {
+		String sql = "FROM Userinfo WHERE userName = '"+name+"'";
+		Userinfo userInfo = (Userinfo) baseDao.loadObject(sql);
+		return userInfo;
+	}
+	<% 
+	}
+	%>
+
+
+}

@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/32/branches/Release_20130114/Rose4j/Rose4j/resource/src/util
+END
+ListViewAjaxController.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/34/branches/Release_20130114/Rose4j/Rose4j/resource/src/util/ListViewAjaxController.java
+END
+HandlerInterceptor.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/!svn/ver/32/branches/Release_20130114/Rose4j/Rose4j/resource/src/util/HandlerInterceptor.java
+END
+DateConvertEditor.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/!svn/ver/32/branches/Release_20130114/Rose4j/Rose4j/resource/src/util/DateConvertEditor.java
+END
+BaseDAO.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/32/branches/Release_20130114/Rose4j/Rose4j/resource/src/util/BaseDAO.java
+END
+BaseDAOImpl.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/32/branches/Release_20130114/Rose4j/Rose4j/resource/src/util/BaseDAOImpl.java
+END
+WebBinding.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/32/branches/Release_20130114/Rose4j/Rose4j/resource/src/util/WebBinding.java
+END

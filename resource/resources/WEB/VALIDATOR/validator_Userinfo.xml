@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<validator>
+	<field dataType="mz" validType="required,error" name="userName">
+		<message>
+			<required>请填写姓名</required>
+			<error>昵称至少6个字符,最多18个字符！</error>
+			</message>
+		
+	</field>
+	<field dataType="n" validType="required,error" name="password">
+		<message>
+			<required>请填写密码</required>
+			<error>密码范围在6~16位之间,不能使用空格！</error>
+			</message>
+		
+	</field>
+	<field dataType="m" validType="required,error" name="mobile">
+		<message>
+			<required>请填写电话号码</required>
+			<error>请输入合法的电话号码格式</error>
+			</message>
+		
+	</field>
+
+	<field dataType="s" validType="required,error" name="address">
+		<message>
+			<required>请填写地址</required>
+			<error>请填写正确的格式</error>
+			</message>
+	</field>
+	
+</validator>

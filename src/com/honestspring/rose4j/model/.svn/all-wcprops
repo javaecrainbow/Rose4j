@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/model
+END
+PackageNameInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/model/PackageNameInfo.java
+END
+JspTemplateArgs.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/model/JspTemplateArgs.java
+END
+ModelProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/34/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/model/ModelProvider.java
+END
+JavaTemplateArgs.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/model/JavaTemplateArgs.java
+END
+ProjectBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/31/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/model/ProjectBean.java
+END
+BaseTemplateArgs.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/model/BaseTemplateArgs.java
+END
+PluginProject.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/31/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/model/PluginProject.java
+END
+EntityFieldInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/model/EntityFieldInfo.java
+END
+Person.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/!svn/ver/34/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/model/Person.java
+END
+ClassNameInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/model/ClassNameInfo.java
+END

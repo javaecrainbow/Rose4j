@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<view_list>
+	<display dataType="integer" length="11" description="编号">userId</display>
+	<display dataType="varchar" length="50" description="姓名">userName</display>
+	<display dataType="varchar" length="5" description="性别">sex</display>
+	<display dataType="varchar" length="32" description="密码">password</display>
+	<display dataType="integer" length="11" description="手机号">mobile</display>
+	<display type="varchar" length="20" description="角色">role</display>
+	<display type="varchar" length="40" description="家庭住址">address</display>
+	<key>userId</key>
+</view_list>

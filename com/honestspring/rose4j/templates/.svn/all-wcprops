@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/com/honestspring/rose4j/templates
+END
+JspListTemplate.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/32/branches/Release_20130114/Rose4j/Rose4j/com/honestspring/rose4j/templates/JspListTemplate.java
+END
+ServiceTemplate.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/com/honestspring/rose4j/templates/ServiceTemplate.java
+END
+ServiceImplTemplate.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/com/honestspring/rose4j/templates/ServiceImplTemplate.java
+END
+JspInputTemplate.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/com/honestspring/rose4j/templates/JspInputTemplate.java
+END
+DaoTemplate.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/!svn/ver/31/branches/Release_20130114/Rose4j/Rose4j/com/honestspring/rose4j/templates/DaoTemplate.java
+END
+BaseDaoTemplate.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/com/honestspring/rose4j/templates/BaseDaoTemplate.java
+END
+BaseDaoImplTemplate.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/31/branches/Release_20130114/Rose4j/Rose4j/com/honestspring/rose4j/templates/BaseDaoImplTemplate.java
+END
+AjaxTemplate.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/!svn/ver/31/branches/Release_20130114/Rose4j/Rose4j/com/honestspring/rose4j/templates/AjaxTemplate.java
+END
+ControllerTemplate.java
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/!svn/ver/32/branches/Release_20130114/Rose4j/Rose4j/com/honestspring/rose4j/templates/ControllerTemplate.java
+END

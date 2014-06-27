@@ -1,0 +1,28 @@
+<%@ jet package="com.honestspring.rose4j.templates" class="DaoTemplate" imports="com.honestspring.rose4j.model.*"%>
+<%
+	JavaTemplateArgs args = (JavaTemplateArgs)argument;
+	String modeName = args.getModeName();
+	String packageName = args.getPackageName();
+	String className = args.getClassName();
+	String entityPackageName = args.getPackageNameInfo().getEntityPackageName();
+	String daoPackageName = args.getPackageNameInfo().getDaoPackageName();
+	String servicePackageName = args.getPackageNameInfo().getServicPackageName();
+	String actionPackageName = args.getPackageNameInfo().getActionPackageName();
+	
+	String entityClassName = args.getClassNameInfo().getEntityClassName();
+	String daoClassName = args.getClassNameInfo().getDaoClassName();
+	String serviceClassName = args.getClassNameInfo().getServicClassName();
+	String actionClassName = args.getClassNameInfo().getActionClassName();
+	
+	String entityObjectName = args.getClassNameInfo().getEntityObjectName();
+	String daoObjectName = args.getClassNameInfo().getDaoObjectName();
+	String serviceObjectName = args.getClassNameInfo().getServicObjectName();
+	String actionObjectName = args.getClassNameInfo().getActionObjectName();
+%>
+package <%=args.getPackageName()%>;
+import org.springframework.stereotype.Repository;
+import com.rose4j.util.BaseDAOImpl;
+@Repository
+public class <%=args.getClassName()%> extends BaseDAOImpl
+{
+}

@@ -1,0 +1,76 @@
+<%@ jet package="com.honestspring.rose4j.templates" class="BaseDaoTemplate" imports="com.honestspring.rose4j.model.*"%>
+<%
+	JavaTemplateArgs args = (JavaTemplateArgs)argument;
+	String modeName = args.getModeName();
+	String packageName = args.getPackageName();
+	String className = args.getClassName();
+	String entityPackageName = args.getPackageNameInfo().getEntityPackageName();
+	String daoPackageName = args.getPackageNameInfo().getDaoPackageName();
+	String servicePackageName = args.getPackageNameInfo().getServicPackageName();
+	String actionPackageName = args.getPackageNameInfo().getActionPackageName();
+	
+	String entityClassName = args.getClassNameInfo().getEntityClassName();
+	String daoClassName = args.getClassNameInfo().getDaoClassName();
+	String serviceClassName = args.getClassNameInfo().getServicClassName();
+	String actionClassName = args.getClassNameInfo().getActionClassName();
+	
+	String entityObjectName = args.getClassNameInfo().getEntityObjectName();
+	String daoObjectName = args.getClassNameInfo().getDaoObjectName();
+	String serviceObjectName = args.getClassNameInfo().getServicObjectName();
+	String actionObjectName = args.getClassNameInfo().getActionObjectName();
+%>
+package <%=args.getPackageName()%>;
+
+import java.sql.Connection;
+import java.util.*;
+import java.io.Serializable;
+import com.honestspring.sys.model.ConditionParameter;
+import com.honestspring.sys.model.SearchParameter;
+
+/** 统一数据访问接口 
+ * @tag pattern
+ * id = "688da21b-d7db-455e-9510-d4810ee832cc"
+ * schema = "e044b2e2-4b64-49ac-ba9f-d095173f0287"
+ * role = "Command"
+ * comment = ""*/
+public interface BaseDAO {
+	/** 加载指定ID的持久化对象 */
+	public Object loadById(Class clazz,Serializable id);
+	
+	/** 加载满足条件的持久化对象 */
+	public Object loadObject(String hql);
+	
+	/** 删除指定ID的持久化对象 */
+	public void delById(Class clazz,Serializable id);
+	
+	/** 保存或更新指定的持久化对象 */
+	public void saveOrUpdate(Object obj);
+	
+	/** 装载指定类的所有持久化对象 */
+	public List listAll(String clazz);
+	/** 装载指定类的所有持久化对象 */
+	public List listAll(String clazz,LinkedList<ConditionParameter> conditionParameters);
+	
+	/** 分页装载指定类的所有持久化对象 */
+	public List listAll(String clazz,int pageNo,int pageSize);
+	
+	/*分页排序装载指定类的所有持久化对象*/
+	public List listAll(SearchParameter searchParameter);
+	/** 统计指定类的所有持久化对象 */
+	public int countAll(String clazz);
+	
+	/** 查询指定类的满足条件的持久化对象 */
+	public List query(String hql);
+	
+	/** 分页查询指定类的满足条件的持久化对象 */
+	public List query(String hql,int pageNo,int pageSize);
+	
+	/** 统计指定类的查询结果 */
+	public int countQuery(String hql);
+	
+	/** 条件更新数据 */
+	public int update(String hql);
+	
+	/** 从连接池中取得一个JDBC连接 */
+	public Connection getConnection();
+}

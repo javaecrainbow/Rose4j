@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/action
+END
+OpenExplorerAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/action/OpenExplorerAction.java
+END
+BusinessParaGenerationAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/!svn/ver/34/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/action/BusinessParaGenerationAction.java
+END
+BuildEnvironmentAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/!svn/ver/34/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/action/BuildEnvironmentAction.java
+END
+CodeGenerationAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/!svn/ver/27/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/action/CodeGenerationAction.java
+END
+SysParaGenerationAction.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/!svn/ver/34/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/action/SysParaGenerationAction.java
+END
+BuildEnvironmentTask.java
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/!svn/ver/32/branches/Release_20130114/Rose4j/Rose4j/src/com/honestspring/rose4j/action/BuildEnvironmentTask.java
+END
